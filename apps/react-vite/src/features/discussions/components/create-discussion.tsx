@@ -10,6 +10,7 @@ import {
   useCreateDiscussion,
 } from '../api/create-discussion';
 
+// create new discussion feature
 export const CreateDiscussion = () => {
   const { addNotification } = useNotifications();
   const createDiscussionMutation = useCreateDiscussion({

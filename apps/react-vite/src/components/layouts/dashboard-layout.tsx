@@ -76,6 +76,7 @@ const Progress = () => {
   );
 };
 
+// app layout wrapper
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
   const logout = useLogout();
   const { checkAccess } = useAuthorization();
@@ -197,6 +198,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
           {children}
         </main>
+        {/* <footer className="">Made by minhhoccode111</footer> */}
       </div>
     </div>
   );

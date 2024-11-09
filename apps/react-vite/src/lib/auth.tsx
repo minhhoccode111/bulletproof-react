@@ -75,6 +75,7 @@ const authConfig = {
 export const { useUser, useLogin, useLogout, useRegister, AuthLoader } =
   configureAuth(authConfig);
 
+// a wrapper make sure user is logged in before they can access a component
 export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const user = useUser();
   const location = useLocation();
