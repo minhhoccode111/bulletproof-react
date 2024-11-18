@@ -54,3 +54,25 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
   },
 });
+
+/*
+The `playwright.config.ts` file is a configuration file for Playwright, a browser automation framework. It's used to define the settings and options for running Playwright tests.
+
+In your `playwright.config.ts` file, you have defined the configuration for your Playwright tests
+
+- The `defineConfig` function is used to define the configuration for Playwright.
+- The `testDir` option specifies the directory where your end-to-end tests are located. In this case, it's set to `./e2e`.
+
+Other configurations in your `playwright.config.ts` file include:
+
+* `fullyParallel`: enables parallel testing
+* `forbidOnly`: fails the build if `test.only` is used in the code
+* `retries`: specifies the number of retries for failed tests
+* `workers`: specifies the number of worker processes to use for parallel testing
+* `reporter`: specifies the test reporter to use
+* `use`: specifies the base URL and other settings for the tests
+* `projects`: defines multiple test projects, including a setup project and a Chromium project
+* `webServer`: specifies the command to run the development server and the port to use
+
+The `playwright.config.ts` file is used to customize the behavior of Playwright and define the settings for your end-to-end tests.
+*/
