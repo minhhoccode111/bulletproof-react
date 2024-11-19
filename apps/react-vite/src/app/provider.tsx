@@ -15,6 +15,7 @@ type AppProviderProps = {
 };
 
 export const AppProvider = ({ children }: AppProviderProps) => {
+  // react query setup for data fetching and caching
   const [queryClient] = React.useState(
     () =>
       new QueryClient({
@@ -30,11 +31,17 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         </div>
       }
     >
+      {/* used to catch and handle errors that occur within the application */}
+      {/* ErrorBoundary: is likely used to display a fallback UI when an error occurs */}
       <ErrorBoundary FallbackComponent={MainErrorFallback}>
+        {/* manage the application's document head (e.g., title, meta tags, etc.) good for SEO */}
         <HelmetProvider>
+          {/* QueryClientProvider: wrap the application and provide a shared `QueryClient` instance */}
           <QueryClientProvider client={queryClient}>
             {import.meta.env.DEV && <ReactQueryDevtools />}
+            {/* notification system to display notifications to the user */}
             <Notifications />
+            {/* configure and manage authentication in the application */}
             <AuthLoader
               renderLoading={() => (
                 <div className="flex h-screen w-screen items-center justify-center">
