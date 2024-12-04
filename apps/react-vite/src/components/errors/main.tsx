@@ -1,5 +1,6 @@
 import { Button } from '../ui/button';
 
+// the fallback component for the main error boundary
 export const MainErrorFallback = () => {
   return (
     <div
@@ -9,6 +10,7 @@ export const MainErrorFallback = () => {
       <h2 className="text-lg font-semibold">Ooops, something went wrong :( </h2>
       <Button
         className="mt-4"
+        // button to go back to `/` index origin
         onClick={() => window.location.assign(window.location.origin)}
       >
         Refresh

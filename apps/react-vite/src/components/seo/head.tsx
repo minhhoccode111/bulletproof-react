@@ -7,6 +7,7 @@ type HeadProps = {
 
 const helmetData = new HelmetData({});
 
+// provide a way to set title and meta description of that page
 export const Head = ({ title = '', description = '' }: HeadProps = {}) => {
   return (
     <Helmet

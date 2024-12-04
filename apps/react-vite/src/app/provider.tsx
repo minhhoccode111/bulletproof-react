@@ -24,6 +24,10 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   );
 
   return (
+    // lets you display a fallback until its children have finished loading
+    // it works by using the React.lazy function to dynamically import components
+    // like this: const LazyComponent = React.lazy(() => import('./LazyComponent'));
+    // which we use a lot in router.tsx
     <React.Suspense
       fallback={
         <div className="flex h-screen w-screen items-center justify-center">
@@ -43,6 +47,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
             <Notifications />
             {/* configure and manage authentication in the application */}
             <AuthLoader
+              // a wrapper to display a loading screen when we authenticate user
               renderLoading={() => (
                 <div className="flex h-screen w-screen items-center justify-center">
                   <Spinner size="xl" />
