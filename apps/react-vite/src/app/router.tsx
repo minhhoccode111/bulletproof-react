@@ -14,6 +14,8 @@ import { AppRoot, AppRootErrorBoundary } from './routes/app/root';
 // createAppRouter: takes instance of queryClient, return a router config object
 // to pass to RouterProvider
 export const createAppRouter = (queryClient: QueryClient) =>
+  // takes an array of route definitions, where each router is an object with a
+  // path and an lazy function that return component to render
   createBrowserRouter([
     {
       // path: global config paths

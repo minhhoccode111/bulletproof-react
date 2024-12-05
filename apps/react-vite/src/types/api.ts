@@ -2,21 +2,27 @@
 // ideally, we want to keep these api related types in sync
 // with the backend instead of manually writing them out
 
+// represent a basic entity with an id and createdAt timestamp, this type is
+// likely used as a base class for other entity class
 export type BaseEntity = {
   id: string;
   createdAt: number;
 };
 
+// other
 export type Entity<T> = {
   [K in keyof T]: T[K];
 } & BaseEntity;
 
+// represents metadata for a paginated response
 export type Meta = {
   page: number;
   total: number;
   totalPages: number;
 };
 
+// represent a user entity with properties for their first name, last name,
+// email, role, team ID, and bio
 export type User = Entity<{
   firstName: string;
   lastName: string;
@@ -26,16 +32,21 @@ export type User = Entity<{
   bio: string;
 }>;
 
+// represents the response from an authentication endpoint. It includes
+// properties for a json web token (jwt) and a user object
 export type AuthResponse = {
   jwt: string;
   user: User;
 };
 
+// represents a team entity with properties for its name and description
 export type Team = Entity<{
   name: string;
   description: string;
 }>;
 
+// represents a discussion entity with properties for its title, body, team ID
+// and author (a User object)
 export type Discussion = Entity<{
   title: string;
   body: string;
@@ -43,6 +54,8 @@ export type Discussion = Entity<{
   author: User;
 }>;
 
+// epresents a comment entity with properties for its body, discussion ID, and
+// author (a User object)
 export type Comment = Entity<{
   body: string;
   discussionId: string;

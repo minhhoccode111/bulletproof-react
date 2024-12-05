@@ -65,15 +65,19 @@ const registerWithEmailAndPassword = (
 
 // authConfig object to configure the authentication management
 const authConfig = {
+  // GET /auth/me
   userFn: getUser,
+  // POST /auth/login
   loginFn: async (data: LoginInput) => {
     const response = await loginWithEmailAndPassword(data);
     return response.user;
   },
+  // POST /auth/register
   registerFn: async (data: RegisterInput) => {
     const response = await registerWithEmailAndPassword(data);
     return response.user;
   },
+  // POST /auth/logout
   logoutFn: logout,
 };
 

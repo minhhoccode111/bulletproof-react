@@ -15,12 +15,14 @@ type AppProviderProps = {
 };
 
 export const AppProvider = ({ children }: AppProviderProps) => {
-  // react query setup for data fetching and caching
+  // init an instance of the QueryClient
   const [queryClient] = React.useState(
-    () =>
-      new QueryClient({
-        defaultOptions: queryConfig,
-      }),
+    // pass a function to only be called once, when the component is mounted
+    // (first render) to compute the initial value of the QueryClient state variable
+    // using a function to create the QueryClient instance is a common pattern
+    // in React and it helps to ensure that the instance is created lazily, only
+    // when needed and with a stable reference
+    () => new QueryClient({ defaultOptions: queryConfig }),
   );
 
   return (
@@ -40,8 +42,9 @@ export const AppProvider = ({ children }: AppProviderProps) => {
       <ErrorBoundary FallbackComponent={MainErrorFallback}>
         {/* manage the application's document head (e.g., title, meta tags, etc.) good for SEO */}
         <HelmetProvider>
-          {/* QueryClientProvider: wrap the application and provide a shared `QueryClient` instance */}
+          {/* QueryClientProvider: wrap the application and provide a SHARED `QueryClient` instance */}
           <QueryClientProvider client={queryClient}>
+            {/* provide a debugger interface for React Query if in dev mode */}
             {import.meta.env.DEV && <ReactQueryDevtools />}
             {/* notification system to display notifications to the user */}
             <Notifications />
